@@ -1,0 +1,16 @@
+Post to facebook code: 
+
+import requests
+
+page_id = "your_page_id"
+access_token = "your_page_access_token"
+
+url = f"https://graph.facebook.com/v12.0/{page_id}/feed"
+params = {
+    "message": "Your Message Here",
+    "access_token": access_token
+}
+
+response = requests.post(url, params=params)
+
+print(response.json())
