@@ -31,17 +31,17 @@ class User(BaseModel):
 
 
 class GenerationDetails(BaseModel):
-    success: bool = False
+    success: bool = None
     message: str = ""
     model_name: str = ""
     model_version: str = ""
-    generated_at: datetime = datetime.now()
+    generated_at: datetime = None
 
 
 class PostedStatus(BaseModel):
-    success: bool = False
+    success: bool = None
     message: str = ""
-    posted_at: datetime = datetime.now()
+    posted_at: datetime = None
     post_url: str = ""
 
 
@@ -49,7 +49,9 @@ class Post(BaseModel):
     post_id: str = str(uuid4())
     platform: constr(regex="facebook|twitter") = None
     created_at: datetime = datetime.now()
+    scheduled_at: datetime 
     created_by: User
+    approved_by: User = None
     prompt: str = ""  
     system_message: str = ""
     title: str = ""
